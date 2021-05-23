@@ -1,8 +1,13 @@
+import Exceptions.FormeGeometriques.Carré;
+import Exceptions.FormeGeometriques.Cercle;
+import Exceptions.FormeGeometriques.FormG;
+import LesPoints.Points;
+import Pointpkg.Point;
+
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] argv)
-    {
+    public static void main(String[] argv) {
 //        System.out.println("Saisie d' un point du plan :");
 //        Point p1 = new Point();
 //        p1.saisir();
@@ -10,7 +15,7 @@ public class Main {
 //        p1.afficher();
 //        System.out.println();
 //        System.out.println("Saisie d'un point de l'espace");
-//        PointEspace pe1 = new PointEspace();
+//        Pointpkg.PointEspace pe1 = new Pointpkg.PointEspace();
 //        pe1.saisir();
 //        System.out.println("Le point pe1 est definit par");
 //        pe1.afficher();
@@ -30,7 +35,7 @@ public class Main {
 //                p = new Point();
 //                break;
 //            case 2:
-//                p = new PointEspace();
+//                p = new Pointpkg.PointEspace();
 //                break;
 //            default:
 //                System.exit(0);
@@ -51,19 +56,19 @@ public class Main {
         System.out.println("Point : "+p1);//un appel implicite à toString()
         Point p2=new Point(11.2,5.6);
         System.out.println("Point : "+p2);
-        PointColoré p3=new PointColoré(11.2,5.6,7.9,"Red");
+        Pointpkg.PointColoré p3=new Pointpkg.PointColoré(11.2,5.6,7.9,"Red");
         System.out.println("Point Coloré : "+p3);
         System.out.println(p3.getClass());
 
         System.out.println("p1=p2 ? "+p3.equals(p1));
-        Etudiant e1=new Etudiant();
+        EtudiantPkg.Etudiant e1=new EtudiantPkg.Etudiant();
         System.out.println(e1);
-        Etudiant e2=new Etudiant();
+        EtudiantPkg.Etudiant e2=new EtudiantPkg.Etudiant();
         System.out.println(e2);
         System.out.println(e1.getClass());
         System.out.println("p1=e1 ? "+p1.equals(e1));
         */
-         //Les Exceptions :
+        //Les Exceptions :
        /* try {
             Point p1 = new Point();
             p1.saisir();//Exception si p1=null
@@ -79,21 +84,49 @@ public class Main {
             System.out.println(e.getMessage());
         }
         System.out.println("fin de l'application");*/
-   try {
-            Point p1 = new Point();
-            p1.saisir();//Exception si p1=null
-            int x=5,y=2;
-            int z=x/y;
-            System.out.println("z = "+z);
-        }catch(Exception e)
-        {
-            System.out.println(e.getMessage());
-        }
-        finally{ //c'est bloc qui est executer dans tous les cas soit qu'il a eu Exception ou non
-       //dans ce bloc finally on fermer des connexions, des flux,...
-       System.out.println("Le bloc finally");
-   }
+//  try {
+//            Point p1= new Point();
+//            p1.saisir();//Exception si p1=null
+//            int x=5,y=0;
+//            int z=x/y;
+//            System.out.println("z = "+z);
+//        }catch(Exception e)//plymorphisme
+//        {
+//            System.out.println(e.getMessage());
+//        }
+//
+//        finally{ //c'est bloc qui est executer dans tous les cas soit qu'il a eu Exception ou non
+//       //dans ce bloc finally on fermer des connexions, des flux,...
+//       System.out.println("Le bloc finally");
+//   }
+//
+//        System.out.println("fin de l'application");
 
-        System.out.println("fin de l'application");
-    }
+
+        //Les exceptions non predefinies
+
+        Points pts = new Points();
+        Point p1 = new Point(123.2, 15.5);
+        pts.add(p1);
+        Point p2 = new Point(123.2, 15.5);
+        try{pts.M1(p2);}
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+
+        //FormG g1=new FormG();//erreur car on ne peut pas instancier une classe abtraite
+        FormG g1=null;
+        System.out.println("1 : Carré\n 2: Cercle");
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Votre choix ?   ");
+        int choix = sc.nextInt();
+        if(choix==1)
+            g1=new Carré(11,10.5);
+        else
+            g1=new Cercle(12,20.5,new Point(5.5,13.2));
+
+        System.out.println("perimètre de la forme = "+g1.perimetre());
+        System.out.println("surface de la forme = "+g1.surface());
+        }
 }

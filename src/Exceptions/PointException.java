@@ -1,3 +1,5 @@
+package Exceptions;
+
 //java gère les erreurs via la classe Exception
 //Une Exception n'est autre q'une classe qui hérite de Exception
 //pour utiliser cette classe on a 5 mots : try, catch, finally, throw et throws
@@ -15,9 +17,9 @@ public class PointException extends Exception {
 
     @Override
     public String toString() {
-        return "PointException{" +
+        return "Exceptions.PointException{ " +
                 super.toString()+
-                "codeErreur=" + codeErreur +
+                " codeErreur=" + codeErreur +
                 '}';
     }
 }

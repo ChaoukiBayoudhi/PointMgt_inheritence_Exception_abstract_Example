@@ -1,4 +1,6 @@
-public class PointColoré extends PointEspace{
+package Pointpkg;
+
+public class PointColoré extends PointEspace {
     //Point
     // |__PointEspace
          // |__PointColoré

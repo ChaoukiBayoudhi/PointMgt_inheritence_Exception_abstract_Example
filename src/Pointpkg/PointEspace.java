@@ -1,10 +1,12 @@
+package Pointpkg;
+
 import java.util.Scanner;
 
 public class PointEspace extends Point {
-    //PointEspace herite de Point
-    //PointEspace est une classe fille ou sous classe
+    //Pointpkg.PointEspace herite de Point
+    //Pointpkg.PointEspace est une classe fille ou sous classe
     //Point est dite classe mère ou super classe
-    //La classe PointEspace herite tout ce que est dans la classe Point
+    //La classe Pointpkg.PointEspace herite tout ce que est dans la classe Point
     //Elle ne peut acceder directement qu'aux attributs et methodes declarés public or protected
 
     private double z;
